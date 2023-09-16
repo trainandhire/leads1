@@ -18,7 +18,7 @@ app.get('/', (req, res)=>{
 })
 
 // GET /webhook
-app.get('/webhook', (req, res) => {
+app.get('/webhooks', (req, res) => {
     console.log("entered")
     // Facebook sends a GET request
     // To verify that the webhook is set up
@@ -31,7 +31,7 @@ app.get('/webhook', (req, res) => {
 })
 
 // POST /webhook
-app.post('/webhook', async (req, res) => {
+app.post('/webhooks', async (req, res) => {
     // Facebook will be sending an object called "entry" for "leadgen" webhook event
     if (!req.body.entry) {
         return res.status(500).send({ error: 'Invalid POST data received' });
