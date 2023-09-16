@@ -24,7 +24,8 @@ app.get('/webhooks', (req, res) => {
     // To verify that the webhook is set up
     // properly, by sending a special challenge that
     // we need to echo back if the "verify_token" is as specified
-    console.log("***",req.query['hub.verify_token'])
+    console.log("***",req.query['hub.verify_token']);
+    console.log("***",req.query['hub.verify_token'] === 'CUSTOM_WEBHOOK_VERIFY_TOKEN');
     if (req.query['hub.verify_token'] === 'CUSTOM_WEBHOOK_VERIFY_TOKEN') {
         res.send(req.query['hub.challenge']);
         return;
@@ -33,12 +34,14 @@ app.get('/webhooks', (req, res) => {
 
 // POST /webhook
 app.post('/webhooks', async (req, res) => {
+    console.log("IN POST WEBHOOK");
     // Facebook will be sending an object called "entry" for "leadgen" webhook event
     if (!req.body.entry) {
         return res.status(500).send({ error: 'Invalid POST data received' });
     }
 
     // Travere entries & changes and process lead IDs
+    console.log("inpost",req.body.entry)
     for (const entry of req.body.entry) {
         for (const change of entry.changes) {
             // Process new lead (leadgen_id)
