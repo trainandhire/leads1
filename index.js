@@ -1,9 +1,11 @@
+require('dotenv').config();
 const axios = require('axios');
 const express = require('express');
 const bodyParser = require('body-parser');
 
+
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 4000;
 
 // Enter the Page Access Token from the previous step
 const FACEBOOK_PAGE_ACCESS_TOKEN = '';
