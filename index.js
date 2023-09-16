@@ -24,6 +24,7 @@ app.get('/webhooks', (req, res) => {
     // To verify that the webhook is set up
     // properly, by sending a special challenge that
     // we need to echo back if the "verify_token" is as specified
+    console.log("***",req.query['hub.verify_token'])
     if (req.query['hub.verify_token'] === 'CUSTOM_WEBHOOK_VERIFY_TOKEN') {
         res.send(req.query['hub.challenge']);
         return;
