@@ -19,7 +19,7 @@ app.get('/', (req, res)=>{
 
 // GET /webhook
 app.get('/webhooks', (req, res) => {
-    console.log("entered")
+    console.log("entered ")
     // Facebook sends a GET request
     // To verify that the webhook is set up
     // properly, by sending a special challenge that
