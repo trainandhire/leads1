@@ -13,7 +13,7 @@ const FACEBOOK_PAGE_ACCESS_TOKEN = 'EAAEnkjLu0M4BOwWd225Q8lbDZBjR5C5EMqS4pi2yW2W
 // Accept JSON POST body
 app.use(bodyParser.json());
 
-app.get('/', (req, res)=>{
+app.get('/', (req, res)=>{``
     res.send("hlo")
 })
 
@@ -45,6 +45,7 @@ app.post('/webhooks', async (req, res) => {
     for (const entry of req.body.entry) {
         for (const change of entry.changes) {
             // Process new lead (leadgen_id)
+            console.log("change",change);
             await processNewLead(change.value.leadgen_id);
         }
     }
